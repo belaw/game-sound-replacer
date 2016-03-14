@@ -1,0 +1,19 @@
+{
+  "name": "game-sound-replacer",
+  "author": {
+    "name": "Jonas Witting",
+    "email": "kontakt@jonasw.eu",
+    "url": "http://jonasw.eu"
+  },
+  "description": "Replace game sound files with randomly selected custom ones",
+  "version": "0.0.1",
+  "license": "MIT",
+  "files": [
+    "game-sound-replacer.js"
+  ],
+  "dependencies": {
+    "chance": "latest",
+    "filesize": "latest",
+    "minimist": "latest"
+  }
+}
