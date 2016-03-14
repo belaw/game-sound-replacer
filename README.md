@@ -1,11 +1,53 @@
-# game-sound-replacer
+# Game Sound Replacer
 
 Replace game sound files with randomly selected custom ones
 
-## Command-line arguments
+## Usage
 
-**-i (folder name)** Input folder. The files in this folder will be randomly selected and copied to the output folder.
+Simply run the node application!
+```shell
+$ node game-sound-replacer.js
+```
 
-**-o (folder name)** Output folder. The files in this folder will be overwritten by the files in the input folder.
+This will scan `input/` and it's subdirectories for files and use them to replace *all files* in `output/` and it's subdirectories.
 
-**-s (seed)** The seed to be used for randomly selecting the input files. Can be a number or a string. Keep in mind that the random selection also depends on the contents of the input folder.
+### Example
+
+#### Contents of `input/`
+```
+custom1.wav
+custom2.wav
+custom3.wav
+readme.txt
+```
+
+#### Contents of `output/`
+```
+soundtrack.wav
+weapons/pistol.wav
+weapons/grenade/explode1.wav
+sound.cache
+```
+
+#### Results
+
+Upon running Game Sound Replacer, the contents of all files in `output/` **including `sound.cache`** will be replaced with the contents of either `custom1.wav`, `custom2.wav`, `custom3.wav` **or `readme.txt`**. All file names will be retained.
+
+#### Replace only a specific file type
+
+If you want to select just `.wav` files
+```shell
+$ node game-sound-replacer.js -i input/**/*.wav -o output/**/*.wav
+```
+
+`**` matches zero or more directories (scan all subdirectories)
+
+### Arguments
+
+ Argument | Description
+--- | ---
+`-i <glob pattern>` | Specify input files
+`-o <glob pattern>` | Specify output files
+`-s <seed>` | Specify seed for random file selection
+
+[Glob pattern help](https://www.npmjs.com/package/glob#glob-primer)
